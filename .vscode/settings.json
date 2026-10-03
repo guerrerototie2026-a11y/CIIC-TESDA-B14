@@ -1,0 +1,7 @@
+{
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.project.sourcePaths": [
+        "CIICC_BATCH14/Lesson/Chapter1",
+        "CIICC_BATCH14/Lesson"
+    ]
+}
