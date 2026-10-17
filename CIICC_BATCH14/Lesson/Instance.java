@@ -7,7 +7,7 @@ public class Instance {
         {System.out.println("ini.code");}
     }
      {
-        System.out.println("Snowy";)
+        System.out.println("Snowy");
         
 
 }
