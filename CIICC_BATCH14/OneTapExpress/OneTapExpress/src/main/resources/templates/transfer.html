@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JCash | Transfer</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <h1 class="logo">JCash</h1>
+        <h2>Send Money</h2>
+        <p class="subtitle">Transfer money to another JCash user.</p>
+
+        <p class="error"
+           th:if="${error}"
+           th:text="${error}">
+        </p>
+
+        <form th:action="@{/transfer}" method="post">
+
+            <label>Receiver Mobile Number</label>
+
+            <input type="tel"
+                   name="receiverMobile"
+                   placeholder="Enter receiver's mobile number"
+                   maxlength="15"
+                   required>
+
+            <label>Transfer Amount (PHP)</label>
+
+            <input type="number"
+                   name="amount"
+                   placeholder="Enter amount"
+                   min="0.01"
+                   step="0.01"
+                   required>
+
+            <button type="submit">Confirm Transfer</button>
+
+        </form>
+
+        <p class="auth-footer">
+            <a th:href="@{/dashboard}">Back to Dashboard</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

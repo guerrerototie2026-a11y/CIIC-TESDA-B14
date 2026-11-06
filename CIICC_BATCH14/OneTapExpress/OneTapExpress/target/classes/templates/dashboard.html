@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONETAPEXPRESS | Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <header class="dashboard-header">
+        <h1 class="logo">ONETAPEXPRESS</h1>
+        <a th:href="@{/logout}" class="logout-btn">Logout</a>
+    </header>
+
+    <main class="dashboard-content">
+
+        <h2>
+            Welcome,
+            <span th:text="${user.fullName}">User</span>!
+        </h2>
+
+        <p class="subtitle">Here's your account overview.</p>
+        <p class="success" th:if="${param.cashInSuccess}">
+            Cash-in successful! Your balance has been updated.
+        </p>
+
+        <p class="success" th:if="${param.transferSuccess}">
+            Transfer successful! Your money has been sent.
+        </p>
+
+        <section class="balance-card">
+            <p>Available Balance</p>
+            <h1>
+                ₱<span th:text="${#numbers.formatDecimal(user.balance, 1, 'COMMA', 2, 'POINT')}">0.00</span>
+            </h1>
+            <small>JCash Savings Account</small>
+        </section>
+
+        <section class="dashboard-actions">
+
+            <div class="action-card">
+                <h3>Cash In</h3>
+                <p>Add money to your account.</p>
+                <a th:href="@{/cash-in}" class="action-btn">Cash In</a>
+            </div>
+
+            <div class="action-card">
+                <h3>Transfer</h3>
+                <p>Send money to another user.</p>
+                <a th:href="@{/transfer}" class="action-btn">Transfer</a>
+            </div>
+
+        </section>
+
+        <section class="transactions-section">
+
+            <h2>Recent Transactions</h2>
+
+            <div th:if="${#lists.isEmpty(transactions)}">
+                <p>No transactions yet.</p>
+            </div>
+
+            <table th:unless="${#lists.isEmpty(transactions)}">
+
+                <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Details</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="transaction : ${transactions}">
+                    <td th:text="${transaction.transactionType}"></td>
+                    <td>
+                        ₱<span th:text="${#numbers.formatDecimal(transaction.amount, 1, 'COMMA', 2, 'POINT')}"></span>
+                    </td>
+                    <td th:text="${transaction.details}"></td>
+                    <td th:text="${#temporals.format(transaction.transactionDate, 'MMM dd, yyyy HH:mm')}"></td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
