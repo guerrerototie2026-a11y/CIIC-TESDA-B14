@@ -1,3 +1,5 @@
+package Activities;
+
 import java.util.Scanner;
 
 public class Task7 {
