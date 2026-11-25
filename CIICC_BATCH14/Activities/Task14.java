@@ -1,3 +1,5 @@
+package Activities;
+
 abstract class abstractClass {
     abstract void abstractMethod();
     void concreteMethod() { 
