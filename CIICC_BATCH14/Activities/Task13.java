@@ -1,3 +1,6 @@
+package Activities;
+
+
 class Vehicle {
     String make;
     String model;
