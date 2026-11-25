@@ -1,3 +1,7 @@
+package Activities;
+
+
+
 public class Task8 {
 
     public static void processIntegers(int... numbers) {
