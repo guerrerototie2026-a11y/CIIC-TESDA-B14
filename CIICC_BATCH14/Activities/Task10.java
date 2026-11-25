@@ -1,4 +1,6 @@
-    class Student {
+package Activities;
+
+class Student {
     private String firstName;
     private String lastName;
 
